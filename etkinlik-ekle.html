@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Etkinlik Ekle</title>
+</head>
+
+<body>
+
+    <h1>Etkinlik Ekle</h1>
+
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="etkinlik-ekle.html">Ekle</a>
+        <a href="etkinlik-guncelle.html">Güncelle</a>
+    </nav>
+
+    <br>
+    <form action="#" method="POST">
+        <label for="etkinlikAdi">Etkinlik Adı</label><br>
+        <input type="text" id="etkinlikAdi" name="etkinlikAdi"><br><br>
+
+        <label for="kategori">Kategori</label><br>
+        <select id="kategori" name="kategori">
+            <option value="seminer">Seminer</option>
+            <option value="atolye">Atölye</option>
+            <option value="diger">Diğer</option>
+        </select><br><br>
+
+        <label for="tarih">Tarih</label><br>
+        <input type="date" id="tarih" name="tarih"><br><br>
+
+        <label for="aciklama">Açıklama</label><br>
+        <textarea id="aciklama" name="aciklama" rows="4" cols="30"></textarea><br><br>
+
+        <button type="submit">Kaydet</button>
+
+    </form>
+
+</body>
+
+</html>
