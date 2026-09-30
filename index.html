@@ -4,35 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Kampüs Etkinlikleri</title>
+    <!-- Mobil uyumluluk -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS dosyanız -->
+    <link rel="stylesheet" href="style/2311012025.css">
 </head>
 
 <body>
 
     <h1>Kampüs Etkinlikleri</h1>
 
-    <a href="index.html">Ana Sayfa</a>
-    <a href="etkinlik-ekle.html">Ekle</a>
-    <a href="etkinlik-guncelle.html">Güncelle</a>
+    <nav>
+        <a href="index.html">Ana Sayfa</a>
+        <a href="etkinlik-ekle.html">Ekle</a>
+        <a href="etkinlik-guncelle.html">Güncelle</a>
+    </nav>
 
     <h2>Etkinlikler</h2>
 
-    <table border="1" cellspacing="0" cellpadding="10" width="300">
-        <tr>
-            <td>
-                <b>Kariyer Günleri</b><br> Seminer - 12 Ekim<br>
-                <a href="etkinlik-detay.html">Detayları gör</a>
-            </td </td>
-        </tr>
+    <!-- Tablo yerine Section ve Article (Grid - Kart) Yapısı -->
+    <section>
+        <article>
+            <b>Kariyer Günleri</b><br> Seminer - 12 Ekim<br>
+            <a href="etkinlik-detay.html" class="detay-link">Detayları gör &rarr;</a>
+        </article>
 
-        <tr>
-            <td>
-                <b>Robotik Atölyesi</b><br> Atölye - 20 Ekim<br>
-                <a href="etkinlik-detay.html">Detayları gör</a>
-            </td>
-        </tr>
-    </table>
+        <article>
+            <b>Robotik Atölyesi</b><br> Atölye - 20 Ekim<br>
+            <a href="etkinlik-detay.html" class="detay-link">Detayları gör &rarr;</a>
+        </article>
 
-    <br><br><br> Merve Varlıbaş- 2026
+        <!-- Yeni Eklenen 3. Kart -->
+        <article>
+            <b>Siber Güvenlik</b><br> Söyleşi - 27 Ekim<br>
+            <a href="etkinlik-detay.html" class="detay-link">Detayları gör &rarr;</a>
+        </article>
+    </section>
+
+    <br><br><br> Merve Varlıbaş - 2026
 
 </body>
 

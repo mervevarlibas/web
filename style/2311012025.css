@@ -1,0 +1,148 @@
+/* Merve Varlıbaş - 2311012025 */
+
+:root {
+    --no: 2311012025;
+    --ton: mod(var(--no), 360);
+    --renk-ana: hsl(var(--ton) 65% 38%);
+    --renk-zemin: hsl(var(--ton) 30% 97%);
+    --font: "Times New Roman", serif;
+    --bosluk-m: 1rem;
+    --kose: 8px;
+}
+
+
+/* 1. MOBİL ÖNCELİKLİ (Telefon) TASARIM */
+
+body {
+    font-family: var(--font);
+    background-color: var(--renk-zemin);
+    color: var(--renk-ana);
+    margin: 0 auto;
+    padding: calc(var(--bosluk-m) / 2);
+    /* Mobilde boşluklar daha dar */
+    max-width: 900px;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+h1,
+h2 {
+    color: var(--renk-ana);
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    /* Mobilde butonlar alt alta (Tek sütun) */
+    gap: var(--bosluk-m);
+    margin-bottom: calc(var(--bosluk-m) * 2);
+}
+
+nav a {
+    text-decoration: none;
+    background-color: var(--renk-ana);
+    color: var(--renk-zemin);
+    padding: calc(var(--bosluk-m) / 2) var(--bosluk-m);
+    border-radius: var(--kose);
+    font-weight: bold;
+    text-align: center;
+}
+
+
+/* YENİ: KART TASARIMI (Grid) */
+
+section {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Mobilde tek sütun (Taşma yok) */
+    gap: var(--bosluk-m);
+}
+
+article {
+    background: white;
+    border: 1px solid var(--renk-ana);
+    border-radius: var(--kose);
+    padding: var(--bosluk-m);
+    box-shadow: 0 4px var(--kose) rgba(0, 0, 0, 0.1);
+    /* Hafif gölge */
+}
+
+article a.detay-link {
+    display: inline-block;
+    margin-top: calc(var(--bosluk-m) / 2);
+    color: #27ae60;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* Form Elemanları (Diğer Sayfalar İçin) */
+
+form {
+    background: white;
+    padding: calc(var(--bosluk-m) * 1.5);
+    border-radius: var(--kose);
+    box-shadow: 0 4px var(--kose) rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    color: var(--renk-ana);
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: calc(var(--bosluk-m) * 0.75);
+    margin-top: calc(var(--bosluk-m) / 2);
+    margin-bottom: calc(var(--bosluk-m) * 1.25);
+    border: 1px solid var(--renk-ana);
+    border-radius: calc(var(--kose) / 2);
+    box-sizing: border-box;
+    font-family: inherit;
+    color: var(--renk-ana);
+}
+
+button {
+    background-color: var(--renk-ana);
+    color: var(--renk-zemin);
+    border: none;
+    padding: var(--bosluk-m);
+    width: 100%;
+    font-size: 1rem;
+    border-radius: calc(var(--kose) / 2);
+    font-weight: bold;
+}
+
+figure {
+    margin: 0;
+    text-align: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--kose);
+}
+
+
+/* 2. GENİŞ EKRAN (Masaüstü/Tablet) TASARIMI */
+
+@media (min-width: 600px) {
+    body {
+        padding: var(--bosluk-m);
+        /* Geniş ekranda daha ferah boşluk */
+    }
+    nav {
+        flex-direction: row;
+        /* Butonlar yan yana */
+        justify-content: center;
+    }
+    section {
+        grid-template-columns: repeat(3, 1fr);
+        /* Geniş ekranda 3 sütun (kartlar yan yana dizilir) */
+    }
+}
