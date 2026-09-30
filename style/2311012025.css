@@ -19,10 +19,12 @@ body {
     max-width: 900px;
     line-height: 1.6;
     box-sizing: border-box;
+    font-size: 17px;
+    /* YENİ: Temel yazı boyutu telefonda daha okunaklı olması için büyütüldü */
 }
 
 
-/* YENİ: Başlık ve Menüyü kapsayan üst yeşil alan (Görseldeki gibi) */
+/* Başlık ve Menüyü kapsayan üst yeşil alan */
 
 header {
     background-color: var(--renk-ana);
@@ -34,20 +36,20 @@ header {
 
 header h1 {
     margin: 0 0 calc(var(--bosluk-m)/2) 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    /* Başlık belirginleştirildi */
     color: white;
     text-align: left;
-    /* Artık ortada değil, solda */
 }
 
 
-/* Menü Tasarımı - Telefondaki Görünüm */
+/* Menü Tasarımı */
 
 nav {
     display: flex;
     flex-wrap: wrap;
     gap: calc(var(--bosluk-m)/2);
-    font-size: 0.9rem;
+    /* Buradaki küçültme (0.9rem) silindi, artık yazılar daha büyük */
 }
 
 nav a {
@@ -58,9 +60,6 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
-
-
-/* Mobilde iki satır görünümü (Ana Sayfa - Etkinlikler | Ekle - Güncelle) için ayırıcı eklentisi */
 
 .nav-ayirici {
     display: inline;
@@ -80,12 +79,11 @@ main {
 }
 
 
-/* Kart (Grid) Yapısı - Ana Sayfa ve Liste İçin */
+/* Kart (Grid) Yapısı */
 
 section.kart-alani {
     display: grid;
     grid-template-columns: 1fr;
-    /* Mobilde tek sütun */
     gap: var(--bosluk-m);
     margin-top: var(--bosluk-m);
 }
@@ -98,13 +96,19 @@ article.kart {
 
 article.kart b {
     color: #000;
+    font-size: 1.15rem;
 }
+
+
+/* Etkinlik isimleri büyütüldü */
 
 article.kart span {
     display: block;
-    font-size: 0.9rem;
-    color: #555;
+    color: #444;
 }
+
+
+/* Alt yazılardaki küçültme silindi */
 
 article.kart a.detay-link {
     display: inline-block;
@@ -120,18 +124,24 @@ article.kart a.detay-link {
 .detay-icerik {
     display: grid;
     grid-template-columns: 1fr;
-    /* Mobilde alt alta */
     gap: var(--bosluk-m);
 }
 
 .detay-afis {
     background-color: #dcedc8;
-    /* Görseldeki açık yeşil tonu */
     text-align: center;
     padding: calc(var(--bosluk-m)*2);
     border-radius: var(--kose);
     color: var(--renk-ana);
 }
+
+.detay-afis img {
+    max-width: 100%;
+    border-radius: var(--kose);
+}
+
+
+/* Resim sınırları ayarlandı */
 
 .detay-kunye dl {
     margin: 0;
@@ -156,25 +166,27 @@ article.kart a.detay-link {
 label {
     display: block;
     margin-top: var(--bosluk-m);
-    font-size: 0.9rem;
     color: #333;
+    font-weight: bold;
 }
+
+
+/* Form başlıkları belirginleşti */
 
 input[type="text"],
 input[type="date"],
 select,
 textarea {
     width: 100%;
-    padding: calc(var(--bosluk-m) * 0.5);
+    padding: calc(var(--bosluk-m) * 0.7);
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     font-family: inherit;
+    font-size: 1rem;
+    /* Kutu içindeki yazılar (Tarih vb.) büyütüldü */
 }
-
-
-/* Görseldeki Kırmızı Hata Durumu */
 
 input.hata {
     border: 1px solid red;
@@ -187,11 +199,12 @@ button {
     border: none;
     padding: calc(var(--bosluk-m) * 0.7);
     margin-top: var(--bosluk-m);
-    width: 100px;
-    /* Buton çok geniş değil */
+    width: 110px;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
+    font-size: 1rem;
+    /* Buton yazısı büyütüldü */
 }
 
 
@@ -200,23 +213,20 @@ button {
 @media (min-width: 600px) {
     body {
         padding: var(--bosluk-m);
+        font-size: 16px;
     }
-    /* Menüde tireleri geniş ekranda gizleyip sadece boşlukla ayırmak için (İsteğe bağlı, görselde yan yana düzeltilmiş) */
     .nav-ayirici.mobilde-var {
         display: none;
     }
     nav {
         gap: var(--bosluk-m);
     }
-    /* Ana sayfada "Yaklaşan 2 etkinlik" için 2 sütun */
     section.ikili-kart {
         grid-template-columns: 1fr 1fr;
     }
-    /* Tüm etkinlikler listesi için 3 sütun */
     section.uclu-kart {
         grid-template-columns: 1fr 1fr 1fr;
     }
-    /* Detay sayfasında görsel solda, künye sağda */
     .detay-icerik {
         grid-template-columns: 1fr 1fr;
     }
