@@ -3,43 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Etkinlik Güncelle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/2311012025.css">
+    <title>Etkinlik Güncelle</title>
 </head>
 
 <body>
 
-    <h1>Etkinlik Güncelle</h1>
+    <header>
+        <h1>Etkinlik Güncelle</h1>
+        <nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="etkinlikler.html">Etkinlikler</a>
+            <a href="etkinlik-ekle.html">Ekle</a>
+            <a href="etkinlik-guncelle.html">Güncelle</a>
+        </nav>
+    </header>
 
-    <nav>
-        <a href="index.html">Ana Sayfa</a>
-        <a href="etkinlik-ekle.html">Ekle</a>
-        <a href="etkinlik-guncelle.html">Güncelle</a>
-    </nav>
+    <main>
+        <form action="#" method="POST">
 
-    <br>
-    <form action="#" method="POST">
+            <label>Etkinlik adı</label>
+            <input type="text" value="Kariyer Günleri 2026">
 
-        <label for="etkinlikAdi">Etkinlik Adı</label><br>
-        <input type="text" id="etkinlikAdi" name="etkinlikAdi" value="Kariyer Günleri"><br><br>
+            <label>Kategori</label>
+            <select>
+                <option selected>Seminer</option>
+            </select>
 
-        <label for="kategori">Kategori</label><br>
-        <select id="kategori" name="kategori">
-            <option value="seminer" selected>Seminer</option>
-            <option value="atolye">Atölye</option>
-            <option value="diger">Diğer</option>
-        </select><br><br>
+            <label>Tarih</label>
+            <input type="text" value="12.10.2026">
 
-        <label for="tarih">Tarih</label><br>
-        <input type="date" id="tarih" name="tarih" value="2026-10-12"><br><br>
+            <label>Açıklama</label>
+            <input type="text" value="Mezun söyleşisi">
 
-        <label for="aciklama">Açıklama</label><br>
-        <textarea id="aciklama" name="aciklama" rows="4" cols="30">Mezun söyleşileri</textarea><br><br>
+            <button type="submit">Güncelle</button>
 
-        <button type="submit">Güncelle</button>
-
-    </form>
+        </form>
+    </main>
 
 </body>
 

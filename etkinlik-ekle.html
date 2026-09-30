@@ -3,42 +3,46 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Etkinlik Ekle</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/2311012025.css">
+    <title>Etkinlik Ekle</title>
 </head>
 
 <body>
 
-    <h1>Etkinlik Ekle</h1>
+    <header>
+        <h1>Etkinlik Ekle</h1>
+        <nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="etkinlikler.html">Etkinlikler</a>
+            <a href="etkinlik-ekle.html">Ekle</a>
+            <a href="etkinlik-guncelle.html">Güncelle</a>
+        </nav>
+    </header>
 
-    <nav>
-        <a href="index.html">Ana Sayfa</a>
-        <a href="etkinlik-ekle.html">Ekle</a>
-        <a href="etkinlik-guncelle.html">Güncelle</a>
-    </nav>
+    <main>
+        <form action="#" method="POST">
 
-    <br>
-    <form action="#" method="POST">
-        <label for="etkinlikAdi">Etkinlik Adı</label><br>
-        <input type="text" id="etkinlikAdi" name="etkinlikAdi"><br><br>
+            <label>Etkinlik adı</label>
+            <input type="text">
 
-        <label for="kategori">Kategori</label><br>
-        <select id="kategori" name="kategori">
-            <option value="seminer">Seminer</option>
-            <option value="atolye">Atölye</option>
-            <option value="diger">Diğer</option>
-        </select><br><br>
+            <label>Kategori</label>
+            <select>
+                <option>Seçiniz</option>
+            </select>
 
-        <label for="tarih">Tarih</label><br>
-        <input type="date" id="tarih" name="tarih"><br><br>
+            <label>Tarih</label>
+            <!-- class="hata" ile görseldeki kırmızı kutu sağlandı -->
+            <input type="text" class="hata" value="boş bırakıldı">
 
-        <label for="aciklama">Açıklama</label><br>
-        <textarea id="aciklama" name="aciklama" rows="4" cols="30"></textarea><br><br>
+            <label>Açıklama</label>
+            <input type="text">
+            <!-- Görselde textarea yerine input gibi görünüyordu, input koydum -->
 
-        <button type="submit">Kaydet</button>
+            <button type="submit">Kaydet</button>
 
-    </form>
+        </form>
+    </main>
 
 </body>
 
