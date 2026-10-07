@@ -39,7 +39,12 @@ function render(dizi) {
     if (listContainer.dataset.limit) {
         // Ana sayfa için (data-limit="2")
         const yaklasan = [...events]
-            .sort((a, b) => a.date.localeCompare(b.date))
+            .sort((a, b) => {
+                // GG-AA-YYYY formatını JavaScript'in anlayacağı AA-GG-YYYY formatına çeviriyoruz
+                const dateA = new Date(a.date.split('-').reverse().join('-'));
+                const dateB = new Date(b.date.split('-').reverse().join('-'));
+                return dateA - dateB; // Yakın tarihten uzak tarihe doğru sıralar
+            })
             .slice(0, Number(listContainer.dataset.limit));
         listContainer.innerHTML = yaklasan.map(createCard).join("");
     } else {
