@@ -1,19 +1,21 @@
 // js/event-form.js
-import { events } from "./data.js"; // Adım 11 için data.js'den etkinlikleri aldık
+import { events } from "./data.js";
 
 const form = document.querySelector("#etkinlik-formu");
 const mesajKutusu = document.querySelector("#form-mesaj");
 
-// ADIM 11: Eğer bu form "Güncelleme" formuysa, id ile bul ve doldur
+// -------------------------------------------------------------
+// 1. KISIM: GÜNCELLEME SAYFASI MANTIĞI (Adım 11 ve 14)
+// -------------------------------------------------------------
+// Eğer bu sayfa GÜNCELLEME sayfasıysa (data-mode="guncelle")
 if (form && form.dataset.mode === "guncelle") {
-    // 1. Adresten id'yi al (Örn: ?id=event-1)
+    // Adresten id'yi al (Örn: ?id=event-1)
     const id = new URLSearchParams(location.search).get("id");
-
-    // 2. Bu id'ye ait etkinliği bul
     const etkinlik = events.find((e) => e.id === id);
+    const container = document.querySelector("#form-container");
 
-    // 3. Etkinlik bulunduysa formu doldur
     if (etkinlik) {
+        // İD bulunduysa formu etkinliğin mevcut bilgileriyle doldur
         form.elements.ad.value = etkinlik.title;
         form.elements.kategori.value = etkinlik.category;
         form.elements.tarih.value = etkinlik.date;
@@ -21,40 +23,39 @@ if (form && form.dataset.mode === "guncelle") {
         form.elements.yer.value = etkinlik.location;
         form.elements.aciklama.value = etkinlik.description;
         form.elements.kontenjan.value = etkinlik.capacity;
-    }
-    // 4. Etkinlik bulunamadıysa (veya id yoksa) formu sil ve uyarı göster
-    else {
-        form.outerHTML = `
-            <div style="background-color: #ffcccc; padding: 20px; border: 1px solid red; border-radius: 8px;">
-                <h3 style="color: red; margin-top: 0;">Uyarı</h3>
-                <p>Geçersiz bir güncelleme bağlantısı kullandınız.</p>
-                <a href="etkinlikler.html" style="font-weight: bold; color: #333;">Etkinliklere git &rarr;</a>
-            </div>
-        `;
+    } else {
+        // İD YOKSA veya BULUNAMADIYSA formu HTML'den sil, yerine uyarı bas
+        if (container) {
+            container.innerHTML = `
+                <div class="uyari-kutu">
+                    Güncellenecek etkinlik seçilmedi. Önce listeden bir etkinlik seçin, detay sayfasındaki 
+                    "Bu etkinliği güncelle" butonunu kullanın.
+                </div>
+                <a href="etkinlikler.html" class="btn">Etkinliklere git</a>
+            `;
+        }
     }
 }
 
-// ... dosyanın geri kalanı (if(form) { form.addEventListener... kısımları) aynen kalsın
-// Eğer sayfada form varsa bu işlemleri yap
+// -------------------------------------------------------------
+// 2. KISIM: FORM DOĞRULAMA VE KAYDETME MANTIĞI (Adım 9, 10, 13)
+// -------------------------------------------------------------
 if (form) {
     form.addEventListener("submit", (e) => {
-        // ADIM 9: Sayfanın yenilenmesini engelle (ÇOK ÖNEMLİ!)
+        // Sayfanın yenilenmesini engelle (Çok önemli!)
         e.preventDefault();
 
-        // 1. Önceki hataları ve mesajları temizle
+        // Önceki hataları ve mesajları temizle
         mesajKutusu.style.display = "none";
         mesajKutusu.innerHTML = "";
 
-        // Tüm hata span'larının içini boşalt ve aria-invalid özelliklerini temizle
         document.querySelectorAll(".hata-metni").forEach(span => span.textContent = "");
         document.querySelectorAll("input, select").forEach(el => el.removeAttribute("aria-invalid"));
-        // Kırmızı çerçeve yapma class'ını (CSS'deki .hata) kaldır
-        document.querySelectorAll(".hata").forEach(el => el.classList.remove("hata"));
 
-        // ADIM 9: Formdaki verileri FormData ile topla
+        // Form verilerini FormData ile topla
         const fd = new FormData(form);
 
-        // Form verilerinden temiz bir JavaScript nesnesi oluştur
+        // Veriyi bir JS nesnesine (object) çevir
         const data = {
             title: fd.get("ad") ? fd.get("ad").trim() : "",
             category: fd.get("kategori") ? fd.get("kategori").trim() : "",
@@ -65,62 +66,47 @@ if (form) {
             capacity: fd.get("kontenjan") ? Number(fd.get("kontenjan")) : null
         };
 
-        // ADIM 10: Doğrulama Kuralları (Hata kontrolü)
         const errors = {};
 
-        // Ad kuralı: 3 karakterden kısa olamaz
+        // Hata Kuralları:
         if (data.title.length < 3) {
-            errors.ad = "En az 3 karakter olmalı.";
+            errors.ad = "Etkinlik adı en az 3 karakter olmalı.";
         }
-
-        // Kategori kuralı: Seçilmemiş olamaz
         if (!data.category || data.category === "Seçiniz" || data.category === "") {
-            errors.kategori = "Lütfen bir kategori seçin.";
+            errors.kategori = "Bir kategori seçin.";
         }
-
-        // Tarih ve saat kuralı: Boş olamaz
         if (data.date === "") {
-            errors.tarih = "Tarih alanı boş bırakılamaz.";
+            errors.tarih = "Tarih seçin.";
         }
         if (data.time === "") {
-            errors.saat = "Saat alanı boş bırakılamaz.";
+            errors.saat = "Saat seçin.";
         }
-
-        // Yer kuralı: Boş olamaz
         if (data.location === "") {
-            errors.yer = "Yer bilgisi boş bırakılamaz.";
+            errors.yer = "Yer bilgisini yazın.";
         }
-
-        // Kontenjan kuralı: Girildiyse 1-1000 arası olmalı
         if (data.capacity !== null && data.capacity !== 0) {
             if (data.capacity < 1 || data.capacity > 1000) {
-                errors.kontenjan = "Kontenjan 1 ile 1000 arasında olmalıdır.";
+                errors.kontenjan = "Kontenjan 1-1000 arası olmalı.";
             }
         }
 
-        // Hata var mı kontrol et
+        // Eğer hata varsa:
         if (Object.keys(errors).length > 0) {
-            // Hataları ekrana bas
+            // Hatalı inputları bul ve kırmızı yapıp altına mesajı yaz
             for (const key in errors) {
                 const inputElement = document.querySelector(`#${key}`);
                 const errorSpan = document.querySelector(`#${key}-hata`);
 
                 if (inputElement && errorSpan) {
-                    errorSpan.textContent = errors[key]; // Altına hata metnini yaz
-                    inputElement.setAttribute("aria-invalid", "true"); // Kırmızı yap
-                    inputElement.classList.add("hata"); // CSS'deki kırmızı border için class ekle
+                    errorSpan.textContent = errors[key];
+                    inputElement.setAttribute("aria-invalid", "true"); // CSS bu sayede kırmızı çerçeve çizer
                 }
             }
-
-            console.log("Formda hatalar var:", errors);
-            return; // Hata varsa işlemi burada durdur, başarı mesajına geçme
+            return; // Hata varsa işlemi burada durdur
         }
 
-        // Hata yoksa: Nesneyi konsola yazdır ve başarı mesajı göster
-        console.log("Kaydedilecek Veri:", data);
-
+        // Hata yoksa: Yeşil kutuyu göster ve JSON verisini ekrana bas
         mesajKutusu.style.display = "block";
-        // Nesneyi JSON formatında güzelce ekrana bas (Yardımcı koddaki gibi)
-        mesajKutusu.innerHTML = `<strong>Başarıyla kaydedildi! (Gerçek kayıt backend sprintinde)</strong><br><pre>${JSON.stringify(data, null, 2)}</pre>`;
+        mesajKutusu.innerHTML = `<span style="color: var(--renk-ana); font-weight:bold;">Etkinlik oluşturuldu (bu sprintte kaydedilmez):</span><br><pre>${JSON.stringify(data, null, 2)}</pre>`;
     });
 }
