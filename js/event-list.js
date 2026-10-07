@@ -10,15 +10,18 @@ function formatDate(dateString) {
 }
 
 // HTML kart şablonunu oluşturan fonksiyon
+// HTML kart şablonunu oluşturan fonksiyon
 function createCard(event) {
     const duzgunTarih = formatDate(event.date);
     return `
         <article class="kart">
             <b>${event.title}</b>
-            <span>${event.category}</span>
-            <span>${duzgunTarih}</span>
-            <span>${event.location}</span>
-            <a href="etkinlik-detay.html?id=${event.id}" class="detay-link">Detay &rarr;</a>
+            <span class="kategori">${event.category}</span>
+            <p>Tarih: ${duzgunTarih}, ${event.time}</p>
+            <p>Yer: ${event.location}</p>
+            <p>Kontenjan: ${event.capacity} kişi</p>
+            <p style="margin-top: 15px; margin-bottom: 15px;">${event.description}</p>
+            <a href="etkinlik-detay.html?id=${event.id}" class="detay-link">Detayları gör</a>
         </article>
     `;
 }

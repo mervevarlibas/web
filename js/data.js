@@ -1,5 +1,3 @@
-// js/data.js
-
 export const events = [{
         id: "event-1",
         title: "Kariyer Günleri 2026",
@@ -42,7 +40,7 @@ export const events = [{
     },
     {
         id: "event-5",
-        title: "Web Tasarım Temelleri",
+        title: "Web Tasarım Atölyesi",
         category: "Atölye",
         date: "12-11-2026",
         time: "11:00",

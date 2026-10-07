@@ -1,4 +1,3 @@
-// js/event-detail.js
 import { events } from "./data.js";
 
 function formatDate(dateString) {
