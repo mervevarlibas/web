@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/2311012025.css">
+    <script type="module" src="js/event-list.js"></script>
     <title>Tüm Etkinlikler</title>
 </head>
 
@@ -14,39 +15,35 @@
         <h1>Tüm Etkinlikler</h1>
         <nav>
             <a href="index.html">Ana Sayfa</a>
+            <span class="nav-ayirici mobilde-var">-</span>
             <a href="etkinlikler.html">Etkinlikler</a>
+            <span class="nav-ayirici mobilde-var">|</span>
             <a href="etkinlik-ekle.html">Ekle</a>
-            <a href="etkinlik-guncelle.html">Güncelle</a>
         </nav>
     </header>
 
     <main>
-        <!-- Geniş ekranda 3'lü yan yana dizilim -->
-        <section class="kart-alani uclu-kart">
-            <article class="kart">
-                <b>Kariyer Günleri</b>
-                <span>Seminer</span>
-                <span>12 Ekim</span>
-                <span>A Blok</span>
-                <a href="etkinlik-detay.html" class="detay-link">Detay &rarr;</a>
-            </article>
 
-            <article class="kart">
-                <b>Robotik Atölyesi</b>
-                <span>Atölye</span>
-                <span>20 Ekim</span>
-                <span>Lab 2</span>
-                <a href="etkinlik-detay.html" class="detay-link">Detay &rarr;</a>
-            </article>
+        <!-- YENİ EKLENEN FİLTRE FORMU (ADIM 6) -->
+        <form id="filtre-formu" class="filtre">
+            <div>
+                <label for="arama">Etkinlik ara</label>
+                <input type="search" id="arama" placeholder="atölye, kariyer...">
+            </div>
+            <div>
+                <label for="kategori-filtre">Kategori</label>
+                <select id="kategori-filtre">
+                    <option value="">Tümü</option>
+                    <!-- İpucu: Diğer kategoriler sonraki adımda JS'den gelecek -->
+                </select>
+            </div>
+        </form>
+        <p id="sonuc" style="font-size: 0.9rem; font-weight: bold; color: var(--renk-ana); margin-bottom: 20px;"></p>
 
-            <article class="kart">
-                <b>Siber Güvenlik</b>
-                <span>Söyleşi</span>
-                <span>27 Ekim</span>
-                <span>B Blok</span>
-                <a href="etkinlik-detay.html" class="detay-link">Detay &rarr;</a>
-            </article>
+        <!-- Kart Listesi (Değişmedi) -->
+        <section id="etkinlik-listesi" class="kart-alani uclu-kart">
         </section>
+
     </main>
 
 </body>

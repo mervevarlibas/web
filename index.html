@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/2311012025.css">
+    <script type="module" src="js/event-list.js"></script>
     <title>Kampüs Etkinlikleri</title>
 </head>
 
@@ -14,9 +15,10 @@
         <h1>Kampüs Etkinlikleri</h1>
         <nav>
             <a href="index.html">Ana Sayfa</a>
+            <span class="nav-ayirici mobilde-var">-</span>
             <a href="etkinlikler.html">Etkinlikler</a>
+            <span class="nav-ayirici mobilde-var">|</span>
             <a href="etkinlik-ekle.html">Ekle</a>
-            <a href="etkinlik-guncelle.html">Güncelle</a>
         </nav>
     </header>
 
@@ -24,19 +26,8 @@
         <p>Fakültedeki seminer, atölye ve söyleşileri tek yerden takip edin.</p>
         <h3>Yaklaşan 2 etkinlik</h3>
 
-        <!-- Geniş ekranda 2'li yan yana dizilim -->
-        <section class="kart-alani ikili-kart">
-            <article class="kart">
-                <b>Kariyer Günleri</b>
-                <span>12 Ekim</span>
-                <a href="etkinlik-detay.html" class="detay-link">Detay &rarr;</a>
-            </article>
-
-            <article class="kart">
-                <b>Robotik Atölyesi</b>
-                <span>20 Ekim</span>
-                <a href="etkinlik-detay.html" class="detay-link">Detay &rarr;</a>
-            </article>
+        <!-- JavaScript'in kartları basacağı BOŞ KUTU ve LİMİT kuralı -->
+        <section id="etkinlik-listesi" class="kart-alani ikili-kart" data-limit="2">
         </section>
 
         <br>

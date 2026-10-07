@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/2311012025.css">
+    <script type="module" src="js/event-form.js"></script>
     <title>Etkinlik Ekle</title>
 </head>
 
@@ -16,30 +17,54 @@
             <a href="index.html">Ana Sayfa</a>
             <a href="etkinlikler.html">Etkinlikler</a>
             <a href="etkinlik-ekle.html">Ekle</a>
-            <a href="etkinlik-guncelle.html">Güncelle</a>
         </nav>
     </header>
 
     <main>
-        <form action="#" method="POST">
+        <!-- form etiketi id ve novalidate aldı -->
+        <form id="etkinlik-formu" action="#" method="POST" novalidate>
 
-            <label>Etkinlik adı</label>
-            <input type="text">
+            <label for="ad">Etkinlik adı</label>
+            <!-- name niteliği FormData için şart -->
+            <input type="text" id="ad" name="ad">
+            <!-- Hata mesajı için boş span -->
+            <span id="ad-hata" class="hata-metni" style="color:red; font-size:0.8rem; display:block;"></span>
 
-            <label>Kategori</label>
-            <select>
-                <option>Seçiniz</option>
+            <label for="kategori">Kategori</label>
+            <select id="kategori" name="kategori">
+                <option value="">Seçiniz</option>
+                <option value="Seminer">Seminer</option>
+                <option value="Atölye">Atölye</option>
+                <option value="Söyleşi">Söyleşi</option>
             </select>
+            <span id="kategori-hata" class="hata-metni" style="color:red; font-size:0.8rem; display:block;"></span>
 
-            <label>Tarih</label>
-            <!-- class="hata" ile görseldeki kırmızı kutu sağlandı -->
-            <input type="text" class="hata" value="boş bırakıldı">
+            <label for="tarih">Tarih</label>
+            <!-- Tarih seçimi için type="date" veya text bırakabilirsiniz ama genelde date kullanılır. Biz texte bağlı kalıyoruz -->
+            <input type="text" id="tarih" name="tarih" placeholder="GG-AA-YYYY">
+            <span id="tarih-hata" class="hata-metni" style="color:red; font-size:0.8rem; display:block;"></span>
 
-            <label>Açıklama</label>
-            <input type="text">
-            <!-- Görselde textarea yerine input gibi görünüyordu, input koydum -->
+            <label for="saat">Saat</label>
+            <!-- Görselde sadece tarih yazsa da kural "Tarih, saat" diyordu, saati de ekliyoruz -->
+            <input type="text" id="saat" name="saat" placeholder="SS:DD">
+            <span id="saat-hata" class="hata-metni" style="color:red; font-size:0.8rem; display:block;"></span>
+
+            <label for="yer">Yer</label>
+            <input type="text" id="yer" name="yer">
+            <span id="yer-hata" class="hata-metni" style="color:red; font-size:0.8rem; display:block;"></span>
+
+            <label for="aciklama">Açıklama</label>
+            <input type="text" id="aciklama" name="aciklama">
+
+            <label for="kontenjan">Kontenjan</label>
+            <!-- Sadece sayı girişi için type="number" -->
+            <input type="number" id="kontenjan" name="kontenjan">
+            <span id="kontenjan-hata" class="hata-metni" style="color:red; font-size:0.8rem; display:block;"></span>
 
             <button type="submit">Kaydet</button>
+
+            <!-- Başarı mesajı için bölüm -->
+            <div id="form-mesaj" style="margin-top: 15px; background-color: #dcedc8; padding: 10px; border-radius: 5px; display: none;"></div>
 
         </form>
     </main>

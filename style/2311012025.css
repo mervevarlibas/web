@@ -208,9 +208,45 @@ button {
 }
 
 
+/* Filtre Formu - Mobilde Alt Alta (Adım 6) */
+
+form.filtre {
+    display: flex;
+    flex-direction: column;
+    /* Alt alta dizer */
+    gap: var(--bosluk-m);
+    padding: var(--bosluk-m);
+    margin-bottom: var(--bosluk-m);
+    background: #f9f9f9;
+    /* Hafif gri arka plan */
+}
+
+form.filtre label {
+    margin-top: 0;
+}
+
+form.filtre div {
+    width: 100%;
+}
+
+
 /* --- GENİŞ EKRAN TASARIMI --- */
 
 @media (min-width: 600px) {
+    /* Geniş Ekranda Filtre Formu Yan Yana (Adım 6) */
+    form.filtre {
+        flex-direction: row;
+        align-items: flex-end;
+        /* Etiketlerle kutuları hizada tutar */
+    }
+    form.filtre div:first-child {
+        flex: 2;
+        /* Arama kutusu daha geniş olsun */
+    }
+    form.filtre div:last-child {
+        flex: 1;
+        /* Kategori kutusu daha dar olsun */
+    }
     body {
         padding: var(--bosluk-m);
         font-size: 16px;
