@@ -1,0 +1,353 @@
+/* Merve Varlıbaş - 2311012025 */
+
+:root {
+    --no: 2311012025;
+    --ton: mod(var(--no), 360);
+    --renk-ana: hsl(var(--ton) 65% 38%);
+    --renk-zemin: hsl(var(--ton) 30% 97%);
+    --font: "Times New Roman", serif;
+    --bosluk-m: 1rem;
+    --kose: 4px;
+}
+
+body {
+    font-family: var(--font);
+    background-color: var(--renk-zemin);
+    color: #333;
+    margin: 0 auto;
+    /* DİKKAT: Yandan basıklığı çözen yer burası. 32px'den 8px'e düşürdük */
+    padding: 8px;
+    max-width: 1000px;
+    line-height: 1.6;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+
+/* Ana Sayfa Kutusu */
+
+main {
+    background: white;
+    border: 3px solid var(--renk-ana);
+    border-top: none;
+    padding: 15px;
+    /* İç boşluk mobilde daraltıldı */
+    min-height: 60vh;
+}
+
+
+/* Üst Başlık (Header) */
+
+header {
+    background-color: var(--renk-ana);
+    color: var(--renk-zemin);
+    padding: 15px;
+    border: 3px solid var(--renk-ana);
+    border-bottom: none;
+}
+
+header h1 {
+    margin: 0 0 5px 0;
+    font-size: 1.5rem;
+    font-weight: normal;
+    color: var(--renk-zemin);
+}
+
+header p {
+    font-size: 0.9rem;
+    margin: 0 0 15px 0;
+    opacity: 0.9;
+}
+
+
+/* Menü ve Aktif Buton Tasarımı */
+
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--renk-zemin);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    border-radius: var(--kose);
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+nav a.aktif {
+    background-color: var(--renk-zemin);
+    color: var(--renk-ana);
+    font-weight: bold;
+}
+
+
+/* Butonlar */
+
+button,
+.btn {
+    background-color: var(--renk-ana);
+    color: var(--renk-zemin);
+    border: none;
+    padding: 10px 20px;
+    border-radius: var(--kose);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    display: inline-block;
+    text-decoration: none;
+}
+
+button:hover,
+.btn:hover {
+    opacity: 0.9;
+}
+
+
+/* Listeler (Etkinlik Kartları) - Görseldeki Gibi */
+
+section.kart-alani {
+    display: grid;
+    gap: var(--bosluk-m);
+    margin-top: var(--bosluk-m);
+}
+
+article.kart {
+    border: 1px solid #ccc;
+    border-radius: var(--kose);
+    padding: var(--bosluk-m);
+    background: white;
+}
+
+article.kart b {
+    color: #222;
+    font-size: 1.15rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+article.kart .kategori {
+    color: var(--renk-ana);
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+article.kart p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+article.kart a.detay-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--renk-ana);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* Filtre Formu */
+
+form.filtre {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: var(--kose);
+}
+
+form.filtre label {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--renk-ana);
+}
+
+form.filtre input,
+form.filtre select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: var(--kose);
+    font-family: inherit;
+}
+
+
+/* Detay Sayfası Tasarımı */
+
+.detay-kutu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(var(--bosluk-m) * 2);
+    margin-bottom: var(--bosluk-m);
+}
+
+.detay-sol {
+    flex: 1.2;
+    min-width: 250px;
+}
+
+.detay-sag {
+    flex: 1;
+    min-width: 250px;
+}
+
+.afis-tasarim {
+    background-color: var(--renk-ana);
+    color: var(--renk-zemin);
+    text-align: center;
+    padding: calc(var(--bosluk-m) * 3);
+    border: 2px solid var(--renk-zemin);
+    box-shadow: inset 0 0 0 4px var(--renk-ana), inset 0 0 0 6px var(--renk-zemin);
+}
+
+.afis-tasarim h2 {
+    color: var(--renk-zemin);
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.afis-tasarim p {
+    color: var(--renk-zemin);
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.kunye-kutu {
+    border: 1px solid var(--renk-ana);
+    padding: var(--bosluk-m);
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.kunye-kutu h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--renk-ana);
+    padding-bottom: 10px;
+    color: var(--renk-ana);
+}
+
+.kunye-kutu dl {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 10px;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.kunye-kutu dt {
+    font-weight: bold;
+    color: var(--renk-ana);
+}
+
+.kunye-kutu dd {
+    margin: 0;
+}
+
+
+/* Formlar */
+
+form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: var(--renk-ana);
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid var(--renk-ana);
+    border-radius: var(--kose);
+    font-family: inherit;
+    box-sizing: border-box;
+    color: var(--renk-ana);
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+    border: 2px solid red;
+    background-color: #fffafa;
+}
+
+.hata-metni {
+    color: red;
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 3px;
+    font-weight: bold;
+}
+
+#form-mesaj {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: var(--renk-zemin);
+    border: 2px solid var(--renk-ana);
+    border-radius: var(--kose);
+    color: var(--renk-ana);
+    display: none;
+}
+
+#form-mesaj pre {
+    margin: 0;
+    white-space: pre-wrap;
+    font-size: 0.9rem;
+}
+
+.uyari-kutu {
+    border: 2px solid red;
+    color: red;
+    padding: 20px;
+    text-align: center;
+    background: #fffafa;
+    margin-bottom: 20px;
+    border-radius: var(--kose);
+}
+
+
+/* Geniş Ekran Kuralları */
+
+@media (min-width: 600px) {
+    body {
+        padding: calc(var(--bosluk-m) * 2);
+    }
+    /* Ekranda yer varsa boşluğu geri ver */
+    main {
+        padding: calc(var(--bosluk-m) * 2);
+    }
+    header {
+        padding: calc(var(--bosluk-m) * 1.5);
+    }
+    section.ikili-kart {
+        grid-template-columns: 1fr 1fr;
+    }
+    section.uclu-kart {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    form.filtre {
+        flex-direction: row;
+        align-items: flex-end;
+    }
+    form.filtre div:first-child {
+        flex: 2;
+    }
+    form.filtre div:last-child {
+        flex: 1;
+    }
+}

@@ -1,5 +1,3 @@
-// js/event-list.js
-
 import { events } from "./data.js";
 
 // Tarihi düzgün formata çeviren yardımcı fonksiyon
@@ -43,7 +41,7 @@ function render(dizi) {
                 // GG-AA-YYYY formatını JavaScript'in anlayacağı AA-GG-YYYY formatına çeviriyoruz
                 const dateA = new Date(a.date.split('-').reverse().join('-'));
                 const dateB = new Date(b.date.split('-').reverse().join('-'));
-                return dateA - dateB; // Yakın tarihten uzak tarihe doğru sıralar
+                return dateA - dateB;
             })
             .slice(0, Number(listContainer.dataset.limit));
         listContainer.innerHTML = yaklasan.map(createCard).join("");
