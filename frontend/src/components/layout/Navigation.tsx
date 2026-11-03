@@ -1,27 +1,23 @@
 // src/components/layout/Navigation.tsx
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Navigation() {
-  const menuItems = [
-    { to: "/", label: "Ana Sayfa" },
-    { to: "/events", label: "Etkinlikler" },
-    { to: "/admin", label: "Yönetim" },
-    { to: "/login", label: "Giriş" },
-  ];
-
   return (
-    <nav>
-      {menuItems.map((item) => (
-        <NavLink 
-          key={item.to} 
-          to={item.to} 
-          // Bulunduğun sayfaya "aktif" class'ını ekler, hocanın css'i ile beyaz kutu olur
-          className={({ isActive }) => (isActive ? "aktif" : "")}
-          end={item.to === "/"} 
-        >
-          {item.label}
-        </NavLink>
-      ))}
+    <nav className="navigasyon">
+      <ul style={{ display: "flex", gap: "1.5rem", listStyle: "none", padding: 0, margin: 0 }}>
+        <li>
+          <Link to="/">Ana Sayfa</Link>
+        </li>
+        <li>
+          <Link to="/events">Etkinlikler</Link>
+        </li>
+        <li>
+          <Link to="/admin">Yönetim</Link>
+        </li>
+        <li>
+          <Link to="/login">Giriş</Link>
+        </li>
+      </ul>
     </nav>
   );
 }
