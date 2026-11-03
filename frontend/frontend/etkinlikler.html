@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/2311012025.css">
+    <script type="module" src="js/event-list.js"></script>
+    <title>Tüm Etkinlikler</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Tüm Etkinlikler</h1>
+        <nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="etkinlikler.html" class="aktif">Etkinlikler</a>
+            <a href="etkinlik-ekle.html">Ekle</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- YENİ EKLENEN FİLTRE FORMU (ADIM 6) -->
+        <form id="filtre-formu" class="filtre">
+            <div>
+                <label for="arama">Etkinlik ara</label>
+                <input type="search" id="arama" placeholder="atölye, kariyer...">
+            </div>
+            <div>
+                <label for="kategori-filtre">Kategori</label>
+                <select id="kategori-filtre">
+                    <option value="">Tümü</option>
+                    <!-- İpucu: Diğer kategoriler sonraki adımda JS'den gelecek -->
+                </select>
+            </div>
+        </form>
+        <p id="sonuc" style="font-size: 0.9rem; font-weight: bold; color: var(--renk-ana); margin-bottom: 20px;"></p>
+
+        <!-- Kart Listesi (Değişmedi) -->
+        <section id="etkinlik-listesi" class="kart-alani uclu-kart">
+        </section>
+
+    </main>
+
+</body>
+
+</html>
