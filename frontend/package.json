@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "deneme",
   "private": true,
   "version": "0.0.0",
@@ -22,5 +23,9 @@
     "oxlint": "^1.81.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
+=======
+  "dependencies": {
+    "react-router-dom": "^7.18.5"
+>>>>>>> 5e166b1b8564d4ca5c5214ec50876e803a09a237
   }
 }
