@@ -5,6 +5,7 @@ import { formatDate } from "../../utils/format-date";
 
 interface EventCardProps {
   event: CampusEvent;
+  onShowDetail: (id: string) => void;
 }
 
 function EventCard({ event }: EventCardProps) {
