@@ -1,4 +1,4 @@
-export const events = [{
+export const seedEvents = [{
         id: "event-1",
         title: "Kariyer Günleri 2026",
         category: "Atölye",
